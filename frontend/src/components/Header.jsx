@@ -1,7 +1,7 @@
-import { FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { logout, reset } from "../features/auth/authSlice";
+import { FaSignInAlt, FaSignOutAlt, FaUser } from 'react-icons/fa';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { logout, reset } from '../features/auth/authSlice';
 
 function Header() {
   const navigate = useNavigate();
@@ -11,13 +11,13 @@ function Header() {
   const onLogOut = () => {
     dispatch(logout());
     dispatch(reset());
-    navigate("/");
+    navigate('/');
   };
 
   return (
     <header className="header">
       <div className="logo">
-        <Link to="/">GoalSetter</Link>
+        <Link to="/">GoalApp</Link>
       </div>
       <ul>
         {user ? (
