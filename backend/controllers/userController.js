@@ -5,9 +5,11 @@ const asyncHandler = require('express-async-handler');
 const User = require('../models/userModel');
 
 // Generate JWT
-const generateToken = (id) => jwt.sign({ id }, process.env.JWT_SECRET, {
-  expiresIn: '30d',
-});
+const generateToken = (id) => {
+  jwt.sign({ id }, process.env.JWT_SECRET, {
+    expiresIn: '30d',
+  });
+};
 
 // @desc Register new User
 // @route POST /api/user
@@ -75,13 +77,7 @@ const loginUser = asyncHandler(async (req, res) => {
 // @route GET /api/user/me
 // @access Private
 const getMe = asyncHandler(async (req, res) => {
-  const { _id, name, email } = await User.findById(req.user.id);
-
-  res.status(200).json({
-    id: _id,
-    name,
-    email,
-  });
+  res.status(200).json(req.user);
 });
 
 module.exports = {
